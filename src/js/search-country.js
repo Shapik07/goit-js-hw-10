@@ -9,13 +9,14 @@ refs = {
 };
 
 const DEBOUNCE_DELAY = 300;
+let searchQuery = '';
 
 refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
   e.preventDefault();
 
-  const searchQuery = e.target.value;
+  searchQuery = e.target.value;
 
   const url = `https://restcountries.com/v3.1/name/${searchQuery}?fields=name,capital,population,languages,flags`;
 
