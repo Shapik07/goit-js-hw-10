@@ -1,3 +1,5 @@
+import fetchCountry from './fetchCountries';
+
 var debounce = require('lodash.debounce');
 
 refs = {
@@ -14,15 +16,11 @@ function onSearch(e) {
 
   const searchQuery = e.target.value;
 
-  const url = `https://restcountries.com/v3.1/name/${searchQuery}`;
+  const url = `https://restcountries.com/v3.1/name/${searchQuery}?fields=name,capital,population,languages,flags`;
 
   fetch(url)
     .then(Response => Response.json())
     .then(console.log);
 }
 
-function fetchCountry() {
-  fetch()
-    .then(result => result.json())
-    .then(console.log);
-}
+
