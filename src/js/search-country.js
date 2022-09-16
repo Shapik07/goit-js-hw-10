@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchCountry from './fetchCountries';
 
 var debounce = require('lodash.debounce');
@@ -9,7 +10,7 @@ refs = {
 
 const DEBOUNCE_DELAY = 300;
 
-refs.input.addEventListener('keyup', debounce(onSearch, DEBOUNCE_DELAY));
+refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
   e.preventDefault();
@@ -22,5 +23,3 @@ function onSearch(e) {
     .then(Response => Response.json())
     .then(console.log);
 }
-
-
