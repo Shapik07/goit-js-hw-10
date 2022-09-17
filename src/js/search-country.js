@@ -18,10 +18,18 @@ function onSearch(e) {
   searchQuery = e.target.value.trim();
 
   fetchCountries(searchQuery)
-    .then(console.log)
+    .then(resolve => {
+      counterCountries(resolve)
+    })
     .catch(error => {
       Notify.failure('Oops, there is no country with that name');
     });
 }
 
-function createMarkup() {}
+function counterCountries(resolve) {
+  if (resolve.length > 10) {
+    Notify.info('Too many matches found. Please enter a more specific name.');
+  }
+}
+
+
