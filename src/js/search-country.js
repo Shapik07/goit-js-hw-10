@@ -4,7 +4,7 @@ import { fetchCountries } from './fetchCountries';
 
 var debounce = require('lodash.debounce');
 
-refs = {
+const refs = {
   input: document.getElementById('search-box'),
   countryList: document.querySelector('.country-list'),
   countryInfo: document.querySelector('.country-info'),
