@@ -5,7 +5,8 @@ var debounce = require('lodash.debounce');
 
 refs = {
   input: document.getElementById('search-box'),
-  countryContainer: document.querySelector('.country-list'),
+  countryList: document.querySelector('.country-list'),
+  countryInfo: document.querySelector('.country-info'),
 };
 
 const DEBOUNCE_DELAY = 300;
@@ -20,6 +21,7 @@ function onSearch(e) {
   fetchCountries(searchQuery)
     .then(resolve => {
       counterCountries(resolve)
+      createListCountryMarkup(resolve)
     })
     .catch(error => {
       Notify.failure('Oops, there is no country with that name');
@@ -32,4 +34,10 @@ function counterCountries(resolve) {
   }
 }
 
-
+function createListCountryMarkup(resolve) {
+  if (resolve.length > 1 && resolve.length <= 10) {
+    resolve.map(() => resolve.forEach(country => {
+      
+    }))
+   }
+}
