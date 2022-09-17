@@ -11,9 +11,9 @@ refs = {
 const DEBOUNCE_DELAY = 300;
 let searchQuery = '';
 
-refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
+refs.input.addEventListener('input', debounce(fetchCountries, DEBOUNCE_DELAY));
 
-function onSearch(e) {
+function fetchCountries(e) {
   e.preventDefault();
   searchQuery = e.target.value;
 
