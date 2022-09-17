@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import fetchCountry from './fetchCountries';
+import { fetchCountries } from './fetchCountries';
 
 var debounce = require('lodash.debounce');
 
@@ -11,15 +11,17 @@ refs = {
 const DEBOUNCE_DELAY = 300;
 let searchQuery = '';
 
-refs.input.addEventListener('input', debounce(fetchCountries, DEBOUNCE_DELAY));
+refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
-function fetchCountries(e) {
+function onSearch(e) {
   e.preventDefault();
-  searchQuery = e.target.value;
+  searchQuery = e.target.value.trim();
 
-  const url = `https://restcountries.com/v3.1/name/${searchQuery}?fields=name,capital,population,languages,flags`;
-
-  fetch(url)
-    .then(Response => Response.json())
-    .then(console.log);
+  fetchCountries(searchQuery)
+    .then(console.log)
+    .catch(error => {
+      Notify.failure('Oops, there is no country with that name');
+    });
 }
+
+function createMarkup() {}
