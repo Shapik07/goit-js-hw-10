@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries';
-// import listCountries from './markup/listCountries';
+import listCountries from './markup/listCountries.hbs';
 
 var debounce = require('lodash.debounce');
 
@@ -22,7 +22,7 @@ function onSearch(e) {
   fetchCountries(searchQuery)
     .then(resolve => {
       counterCountries(resolve)
-      createListCountryMarkup(resolve)
+      appendListCountries(resolve)
     })
     .catch(error => {
       Notify.failure('Oops, there is no country with that name');
@@ -35,10 +35,6 @@ function counterCountries(resolve) {
   }
 }
 
-function createListCountryMarkup(resolve) {
-  if (resolve.length > 1 && resolve.length <= 10) {
-    resolve.map(() => resolve.forEach(country => {
-      
-    }))
-   }
+function appendListCountries(resolve) {
+  refs.countryList.insertAdjacentHTML('beforeend', listCountries(resolve));
 }
