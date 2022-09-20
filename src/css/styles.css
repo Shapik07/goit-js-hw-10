@@ -38,3 +38,34 @@ body {
 .country-list {
   padding-left: 0;
 }
+
+.main-info {
+  display: flex;
+  align-items: center
+}
+
+.country-info_flag {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.country-info_name {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.country-info_list--capital-text,
+.country-info_list--population-text,
+.language_text {
+  font-weight: bold;
+}
+
+.languages {
+  font-weight: normal;
+  padding-left: 0;
+}
+
+.country-info_list {
+  padding-left: 0;
+}
