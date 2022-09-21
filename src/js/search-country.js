@@ -21,6 +21,11 @@ function onSearch(e) {
   e.preventDefault();
   searchQuery = e.target.value.trim();
 
+  if (!searchQuery) {
+    clearAll();
+    return;
+  }
+
   fetchCountries(searchQuery)
     .then(resolve => {
       counterCountries(resolve);
